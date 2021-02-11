@@ -4,5 +4,10 @@ class Friendship < ApplicationRecord
 
   def accept_request
     self.update(status: true)
+    Friendship.create(
+      user_id: self.friend_id,
+      friend_id: self.user_id,
+      status: true
+    )
   end
 end
