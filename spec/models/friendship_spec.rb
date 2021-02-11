@@ -1,56 +1,39 @@
 require "rails_helper"
 
 RSpec.describe Friendship, type: :model do
-  let(:first_user)  { User.create(email: "john@doe.com", password: "johndoe01", password_confirmation: "johndoe01") }
-  let(:second_user) { User.create(email: "jane@doe.com", password: "janedoe01", password_confirmation: "janedoe01") }
+  let(:john) { User.create(email: "john@doe.com", password: "12345678") }
+  let(:jane) { User.create(email: "jane@doe.com", password: "12345678") }
 
   before do
-    first_user.added_friends << second_user
+    expect(Friendship.all).to be_empty
+    Friendship.create(user: john, friend: jane)
   end
 
-  context "friend access" do
-    it "ensures the same friendship" do
-      expect(first_user.added_friendships.last).to eq(second_user.accepted_friendships.last)
-    end
-
-    it "sets the added friend to the first user" do
-      expect(first_user.added_friends.last).to eq(second_user)
-    end
-
-    it "sets the accepted friend to the second user" do
-      expect(second_user.accepted_friends.last).to eq(first_user)
-    end
+  it "gets the sender" do
+    expect(Friendship.first.user).to be_an_instance_of(User)
   end
 
-  context "removing friendship" do
-    it "deletes the friendship itself" do
-      first_user.added_friendships.last.destroy
+  it "gets the receiver" do
+    expect(Friendship.first.friend).to be_an_instance_of(User)
+  end
 
-      first_user.added_friends.reload
-      second_user.accepted_friends.reload
-
-      expect(first_user.added_friends.empty?).to be true
-      expect(second_user.accepted_friends.empty?).to be true
+  describe "accept request" do
+    before do
+      expect { Friendship.first.accept_request }.not_to raise_error
     end
 
-    it "deletes sender from accepted friends" do
-      first_user.destroy
-
-      second_user.accepted_friendships.reload
-      second_user.accepted_friends.reload
-
-      expect(second_user.accepted_friendships.empty?).to be true
-      expect(second_user.accepted_friends.empty?).to be true
+    it "creates a new Friendship instance" do
+      expect(Friendship.all.size).to eq(2)
     end
 
-    it "deletes receiver from added friends" do
-      second_user.destroy
+    describe "new request" do
+      it "sets old user to new friend" do
+        expect(Friendship.first.user).to eq(Friendship.last.friend)
+      end
 
-      first_user.added_friendships.reload
-      first_user.added_friends.reload
-
-      expect(first_user.added_friendships.empty?).to be true
-      expect(first_user.added_friends.empty?).to be true
+      it "sets old friend to new user" do
+        expect(Friendship.first.friend).to eq(Friendship.last.user)
+      end
     end
   end
 end
