@@ -100,6 +100,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hirb (0.7.3)
     i18n (1.8.8)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -250,6 +251,7 @@ DEPENDENCIES
   guard
   guard-brakeman
   guard-rspec
+  hirb
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
