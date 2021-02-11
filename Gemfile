@@ -48,6 +48,7 @@ group :development do
   gem 'guard'
   gem 'guard-brakeman'
   gem 'guard-rspec'
+  gem 'hirb'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
