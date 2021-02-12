@@ -12,6 +12,8 @@
   <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.text_area :body %>
+    <%= form.hidden_field :author_id, value: current_user.id %>
+    <%= form.submit "Post" %>
   </div>
 <% end %>

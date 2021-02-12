@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @posts = Post.all
+    @posts = []
+    current_user.friends.each do |friend|
+      @posts += friend.posts
+    end unless current_user.friends.empty?
+    @posts += current_user.posts
+    @posts.shuffle!
     @post = Post.new
   end
 
@@ -22,7 +27,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: "Post was successfully created." }
+        format.html { redirect_to root_path, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,6 +63,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.fetch(:post, {})
+    params.require(:post).permit(:body, :author_id)
   end
 end
