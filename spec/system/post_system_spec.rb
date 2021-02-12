@@ -9,7 +9,9 @@ RSpec.describe "Post System", type: :system do
   before do
     driven_by(:rack_test)
 
-    authenticate
+    user = User.create(email: "dummy@test.com", password: "12345678")
+    sign_in user
+    visit "/"
   end
 
   it "can create a new post" do
