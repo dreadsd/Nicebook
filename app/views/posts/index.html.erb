@@ -1,0 +1,10 @@
+<%= render 'form', post: @post %>
+<% @posts.each do |post| %>
+  <div class="post">
+    <p><%= post.body %></p>
+  </div>
+<% end %>
+<%# link_to 'Show', post %></td>
+<%# link_to 'Edit', edit_post_path(post) %></td>
+<%# link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%# link_to 'New Post', new_post_path %>
