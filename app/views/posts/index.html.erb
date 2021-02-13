@@ -36,11 +36,13 @@
             <!--<a href="#" class="text-decoration-none text-secondary fw-bold">Like</a> -->
             <% liking = Liking.where(user_id: current_user.id, post_id: post.id) %>
             <% if liking.any? %>
+              <i class="bi-hand-thumbs-up-fill"></i>
               <%= link_to "Like", liking_path(liking.first.id), method: :delete, class: "btn text-primary fw-bold" %>
             <% else %>
               <%= form_with model: Liking.new do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
                 <%= f.hidden_field :post_id, value: post.id %>
+                <i class="bi-hand-thumbs-up"></i>
                 <%= f.submit "Like", class: "btn text-secondary fw-bold" %>
               <% end %>
             <% end %>
