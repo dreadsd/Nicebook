@@ -14,6 +14,6 @@ RSpec.describe "Authentications", type: :system do
     fill_in "Password", with: "12345678"
     click_button "Log in"
 
-    expect(page).to have_text("Posts")
+    expect(page).to have_text("Signed in successfully.")
   end
 end

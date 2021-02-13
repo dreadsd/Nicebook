@@ -10,6 +10,7 @@ require 'rspec/rails'
 RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::ControllerHelpers, type: :view
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

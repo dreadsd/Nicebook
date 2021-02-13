@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "posts/show", type: :view do
   before(:each) do
-    @post = assign(:post, Post.create!())
+    user = User.create(email: "dummy@test.com", password: "12345678")
+    sign_in user
+    @post = assign(:post, Post.create!(body: "Dummy test", author: user))
   end
 
   it "renders attributes in <p>" do
