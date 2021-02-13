@@ -11,10 +11,26 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
+  <body class="container-fluid gx-0">
+    <nav class="navbar navbar-expand-lg bg-primary px-5">
+      <div class="col-3">
+        <span class="navbar-brand text-white">Nicebook</span>
+      </div>
+      <div class="col-6">
+        <input type="text" class="form-control w-50">
+      </div>
+      <div class="col-3 px-5">
+        <img src="https://bulma.io/images/placeholders/32x32.png" class="px-2">
+        <a href="#" class="text-white fw-bold text-decoration-none">John Doe</a>
+      </div>
+    </nav>
 
-    <%= yield %>
+    <div class="row gx-0">
+      <div class="sidebar col-3 border-end border-secondary">
+      </div>
+      <%= yield %>
+      <div class="sidebar col-3 border-start border-secondary">
+      </div>
+    </div>
   </body>
 </html>

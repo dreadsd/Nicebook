@@ -1,50 +1,49 @@
-<%= render 'form', post: @post %>
-<% @posts.each do |post| %>
-  <div class="post">
-    <p><%= post.body %></p>
-  </div>
-<% end %>
-
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+<div class="container-fluid col-6 px-5">
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
+  <%= render 'form', post: @post %>
+  <% @posts.each do |post| %>
+    <div class="card mb-4">
+      <div class="card-body pb-1">
+        <div class="card-title fw-bold text-primary row pt-1 pb-2">
+          <div class="col-1">
+            <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
+          </div>
+          <div class="col">
+            <div class="row">
+              <a href="#" class="text-decoration-none">The name here</a>
+            </div>
+            <div class="row">
+              <span class="text-muted pub-at">time ago</span>
+            </div>
+          </div>
+          <div class="col-1 align-self-end">
+            <div class="btn-group dropdown-actions ms-3">
+              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Show", post, class: "dropdown-item" %></li>
+                <li><%= link_to "Edit", edit_post_path(post), class: "dropdown-item" %></li>
+                <li><%= link_to 'Destroy', post, method: :delete, class: "dropdown-item" %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-text mb-3">
+          <%= post.body %>
+        </div>
+        <div class="card-footer row bg-transparent text-center">
+          <div class="col">
+            <a href="#" class="text-decoration-none text-secondary fw-bold">Like</a>
+          </div>
+          <div class="col">
+            <a href="#" class="text-decoration-none text-secondary fw-bold">Comment</a>
+          </div>
+          <div class="col">
+            <a href="#" class="text-decoration-none text-secondary fw-bold">Share</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>
-
-<%# link_to 'Show', post %></td>
-<%# link_to 'Edit', edit_post_path(post) %></td>
-<%# link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <%# link_to 'New Post', new_post_path %>
