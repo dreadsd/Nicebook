@@ -11,10 +11,10 @@
           </div>
           <div class="col">
             <div class="row">
-              <a href="#" class="text-decoration-none">The name here</a>
+              <a href="#" class="text-decoration-none author-name"><%= post.author.name %></a>
             </div>
             <div class="row">
-              <span class="text-muted pub-at">time ago</span>
+              <span class="text-muted pub-at"><%= distance_of_time_in_words(Time.now, post.created_at) %></span>
             </div>
           </div>
           <div class="col-1 align-self-end">
