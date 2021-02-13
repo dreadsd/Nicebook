@@ -33,7 +33,17 @@
         </div>
         <div class="card-footer row bg-transparent text-center">
           <div class="col">
-            <a href="#" class="text-decoration-none text-secondary fw-bold">Like</a>
+            <!--<a href="#" class="text-decoration-none text-secondary fw-bold">Like</a> -->
+            <% liking = Liking.where(user_id: current_user.id, post_id: post.id) %>
+            <% if liking.any? %>
+              <%= link_to "Like", liking_path(liking.first.id), method: :delete, class: "btn text-primary fw-bold" %>
+            <% else %>
+              <%= form_with model: Liking.new do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :post_id, value: post.id %>
+                <%= f.submit "Like", class: "btn text-secondary fw-bold" %>
+              <% end %>
+            <% end %>
           </div>
           <div class="col">
             <a href="#" class="text-decoration-none text-secondary fw-bold">Comment</a>
