@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Friendship, type: :model do
-  let(:john) { User.create(email: "john@doe.com", password: "12345678") }
-  let(:jane) { User.create(email: "jane@doe.com", password: "12345678") }
+  let(:john) { User.create(name: "John Doe", email: "john@doe.com", password: "12345678") }
+  let(:jane) { User.create(name: "Jane Doe", email: "jane@doe.com", password: "12345678") }
 
   before do
     expect(Friendship.all).to be_empty
