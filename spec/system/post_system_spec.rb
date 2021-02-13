@@ -1,9 +1,4 @@
 require 'rails_helper'
-require 'support/user_helpers'
-
-RSpec.configure do |c|
-  c.include UserHelpers
-end
 
 RSpec.describe "Post System", type: :system do
   before do

@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :posts, foreign_key: :author_id
 
+  validates :name, presence: true, length: { minimum: 4 }
+
   def send_request_to(user)
     request = Friendship.create(user: self, friend: user)
     user.friend_requests << request

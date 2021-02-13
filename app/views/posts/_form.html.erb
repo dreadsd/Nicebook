@@ -1,19 +1,14 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with(model: post, class: "px-1 py-2 mb-5 card") do |form| %>
+  <div class="card-body row">
+    <div class="col-1">
+      <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.text_area :body %>
-    <%= form.hidden_field :author_id, value: current_user.id %>
-    <%= form.submit "Post" %>
+    <div class="col">
+      <%= form.text_area :body, placeholder: "Write something...", class: "form-control" %>
+      <%= form.hidden_field :author_id, value: current_user.id %>
+    </div>
   </div>
-<% end %>
+  <div class="card-footer bg-transparent">
+    <%= form.submit "Post", class: "btn" %>
+  </div>
+ <% end %>
