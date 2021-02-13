@@ -30,3 +30,7 @@ body {
 .dropdown-actions {
   margin-top: -3.25rem;
 }
+
+i {
+  font-size: 1.5rem;
+}

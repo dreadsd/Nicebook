@@ -31,19 +31,20 @@
         <div class="card-text mb-3">
           <%= post.body %>
         </div>
-        <div class="card-footer row bg-transparent text-center">
+        <div class="card-footer row bg-transparent text-center py-0">
           <div class="col">
-            <!--<a href="#" class="text-decoration-none text-secondary fw-bold">Like</a> -->
             <% liking = Liking.where(user_id: current_user.id, post_id: post.id) %>
             <% if liking.any? %>
-              <i class="bi-hand-thumbs-up-fill"></i>
-              <%= link_to "Like", liking_path(liking.first.id), method: :delete, class: "btn text-primary fw-bold" %>
+              <%= link_to(liking_path(liking.first.id), method: :delete, class: "btn text-primary fw-bold") do %>
+                <i class="bi-hand-thumbs-up-fill"></i> Like
+              <% end %>
             <% else %>
-              <%= form_with model: Liking.new do |f| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :post_id, value: post.id %>
-                <i class="bi-hand-thumbs-up"></i>
-                <%= f.submit "Like", class: "btn text-secondary fw-bold" %>
+              <%= form_with model: Liking.new, id: "like-#{post.id}" do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id, id: nil %>
+                <%= f.hidden_field :post_id, value: post.id, id: nil %>
+                <%= link_to("", onclick: "document.querySelector('#like-#{post.id}').submit()", class: "btn text-secondary fw-bold") do %>
+                  <i class="bi-hand-thumbs-up"></i> Like
+                <% end %>
               <% end %>
             <% end %>
           </div>
