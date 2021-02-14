@@ -3,4 +3,6 @@ class Post < ApplicationRecord
 
   has_many :likings
   has_many :likes, through: :likings, source: :user
+
+  validates_presence_of :author
 end

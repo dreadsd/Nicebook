@@ -1,19 +1,20 @@
-require 'rails_helper'
+require "rails_helper"
+require "support/validate_record_helper.rb"
+
+RSpec.configure { |c| c.include RecordValidations }
 
 RSpec.describe User, type: :model do
-  describe "validates instance" do
-    describe "name" do
-      it "doesn't save user if no name" do
-        expect { User.create!(email: "dummy@test.com", password: "12345678") }.to raise_error(ActiveRecord::RecordInvalid)
-      end
+  describe "validations" do
+    it "is invalid when name is not given" do
+      check_validation_of(User.new(email: "dummy@test.com", password: "12345678"), :invalid?)
+    end
 
-      it "doesn't save user if name is less than 4 characters" do
-        expect { User.create!(name: "dum", email: "dummy@test.com", password: "12345678") }.to raise_error(ActiveRecord::RecordInvalid)
-      end
+    it "is invalid when name is less than 4 characters" do
+      check_validation_of(User.new(name: "dum", email: "dummy@test.com", password: "12345678"), :invalid?)
+    end
 
-      it "saves the user if name more than 4 characters" do
-        expect { User.create!(name: "Dummy Test", email: "dummy@test.com", password: "12345678") }.not_to raise_error
-      end
+    it "is valid when name is more than 4 characters" do
+      check_validation_of(User.new(name: "Dummy Test", email: "dummy@test.com", password: "12345678"), :valid?)
     end
   end
 

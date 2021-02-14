@@ -9,7 +9,6 @@ class LikingsController < ApplicationController
   end
 
   def destroy
-    #@liking = Liking.find_by_user_id_and_post_id(params[:liking][:user_id], params[:liking][:post_id])
     @liking = Liking.find(params[:id])
     @liking.destroy
     redirect_back(fallback_location: root_path)

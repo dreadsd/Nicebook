@@ -3,20 +3,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @posts = []
-    current_user.friends.each do |friend|
-      @posts += friend.posts
-    end unless current_user.friends.empty?
-    @posts += current_user.posts
-    @posts.shuffle!
+    @posts = Post.where(author: current_user.friends + [current_user]).includes(:author).shuffle
     @post = Post.new
   end
 
   def show
-  end
-
-  def new
-    @post = Post.new
   end
 
   def edit
