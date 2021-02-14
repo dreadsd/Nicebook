@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "/posts", type: :request do
   before do
-    User.create(email: "dummy@test.com", password: "12345678")
+    User.create(name: "Dummy Test", email: "dummy@test.com", password: "12345678")
     sign_in User.first
   end
 

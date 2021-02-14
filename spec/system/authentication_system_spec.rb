@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Authentications", type: :system do
   before do
     driven_by(:rack_test)
-    User.create(email: "system@test.com", password: "12345678")
+    User.create(name: "System Test", email: "system@test.com", password: "12345678")
   end
 
   it "logs in before anything" do

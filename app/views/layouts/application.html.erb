@@ -16,13 +16,15 @@
       <div class="col-3">
         <span class="navbar-brand text-white">Nicebook</span>
       </div>
-      <div class="col-6">
-        <input type="text" class="form-control w-50">
-      </div>
-      <div class="col-3 px-5">
-        <img src="https://bulma.io/images/placeholders/32x32.png" class="px-2">
-        <a href="#" class="text-white fw-bold text-decoration-none"><%= current_user.name %></a>
-      </div>
+      <% if user_signed_in? %>
+        <div class="col-6">
+          <input type="text" class="form-control w-50">
+        </div>
+        <div class="col-3 px-5">
+          <img src="https://bulma.io/images/placeholders/32x32.png" class="px-2">
+          <a href="#" class="text-white fw-bold text-decoration-none"><%= current_user.name %></a>
+        </div>
+      <% end %>
     </nav>
 
     <div class="row gx-0">
