@@ -23,7 +23,9 @@
 
     <div class="row gx-0">
       <div class="sidebar col-3">
-        <%= render "review/left_sidebar" %>
+        <% if user_signed_in? %>
+          <%= render "review/left_sidebar" %>
+        <% end %>
       </div>
       <div class="container-fluid col-6 px-5">
         <%= yield %>
