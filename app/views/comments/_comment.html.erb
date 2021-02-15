@@ -1,0 +1,19 @@
+<div class="row comment mb-2">
+  <div class="col-1">
+    <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
+  </div>
+  <div class="col">
+    <div class="rounded-pill py-2 px-3 me-5 comment-body">
+      <a href="#" class="text-primary text-decoration-none"><%= comment.author.name %></a>
+      <%= comment.body %>
+    </div>
+    <div class="px-3 py-1">
+      <a href="#" class="text-decoration-none">Like</a>
+      <span class="fw-bold">·</span>
+      <a href="#" class="text-decoration-none">Reply</a>
+      <span class="fw-bold">·</span>
+      <%= distance_of_time_in_words(Time.now, comment.created_at) %>
+      &nbsp; <i class="bi-hand-thumbs-up-fill fs-5"></i> 5
+    </div>
+  </div>
+</div>

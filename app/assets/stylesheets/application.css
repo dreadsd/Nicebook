@@ -64,3 +64,7 @@ i.bi-x:hover {
   padding-right: 1.6rem;
   padding-top: 0.9rem;
 }
+
+.comment-body {
+  background-color: rgb(242, 242, 242);
+}

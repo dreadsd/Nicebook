@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments, except: [:index, :new]
   resources :posts, except: :new
 
   resources :likings, only: :destroy
