@@ -2,9 +2,18 @@
   <div class="card-body ps-5 pt-4">
     <h5 class="card-title mb-3">Friends</h5>
     <% current_user.friends.each do |friend| %>
-      <div class="mb-3">
-        <img src="https://bulma.io/images/placeholders/32x32.png" class="pb-1">
-        <%= friend.name %>
+      <div class="row mb-3 align-items-center">
+        <div class="col-1 pb-1">
+          <img src="https://bulma.io/images/placeholders/32x32.png">
+        </div>
+        <div class="col ps-5">
+          <%= friend.name %>
+        </div>
+        <div class="col-1 align-self-end me-5 pb-2">
+          <%= link_to(unfriend_path(current_user, friend), class: "text-danger text-decoration-none") do %>
+            <i class="bi-person-dash-fill"></i>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
@@ -14,9 +23,18 @@
   <div class="card-body ps-5 pt-4">
     <h5 class="card-title mb-3">People</h5>
     <% User.where.not(id: current_user.friends.map { |i| i = i.id } + [current_user.id]).each do |user| %>
-      <div class="mb-3">
-        <img src="https://bulma.io/images/placeholders/32x32.png" class="pb-1">
-        <%= user.name %>
+      <div class="row mb-3 align-items-center">
+        <div class="col-1 pb-1">
+          <img src="https://bulma.io/images/placeholders/32x32.png" class="pb-1">
+        </div>
+        <div class="col ps-5">
+          <%= user.name %>
+        </div>
+        <div class="col-1 align-self-end me-5 pb-2">
+          <%= link_to(send_request_path(current_user, user), class: "text-success text-decoration-none") do %>
+            <i class="bi-person-plus-fill"></i>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
