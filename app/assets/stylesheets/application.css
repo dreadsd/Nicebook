@@ -24,7 +24,7 @@ textarea {
 }
 
 body {
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(232, 232, 232) !important;
 }
 
 .dropdown-actions {
