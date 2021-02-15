@@ -32,4 +32,8 @@
       <% end %>
     </ul>
   </div>
+  |
+  <%= link_to(destroy_user_session_path, method: :delete, class: "text-white") do %>
+    <i class="bi-door-open-fill"></i>
+  <% end %>
 </div>
