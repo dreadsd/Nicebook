@@ -8,7 +8,7 @@
   </a>
   |
   <div class="dropdown dropstart d-inline">
-    <a href="#" class="text-white fw-bold dropdown-toggle" data-bs-toggle="dropdown"><i class="bi-people-fill"></i></a>
+    <a href="#" class="text-white text-decoration-none fw-bold dropdown-toggle" data-bs-toggle="dropdown"><i class="bi-people-fill"></i></a>
     <ul class="dropdown-menu" id="dropdown-requests">
       <% if current_user.friend_requests.any? %>
         <% current_user.friend_requests.each do |friend_request| %>
