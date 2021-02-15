@@ -4,8 +4,8 @@ RSpec.describe "Post System", type: :system do
   before do
     driven_by(:rack_test)
 
-    user = User.create(name: "Dummy Test", email: "dummy@test.com", password: "12345678")
-    sign_in user
+    User.create(name: "Dummy Test", email: "dummy@test.com", password: "12345678")
+    sign_in User.first
     visit "/"
   end
 
