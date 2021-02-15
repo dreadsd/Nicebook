@@ -34,3 +34,33 @@ body {
 i {
   font-size: 1.5rem;
 }
+
+#dropdown-requests {
+  padding: 0 0.5rem 0.4rem 1.1rem;
+}
+
+.friend-request {
+  padding: 0;
+  cursor: pointer;
+}
+
+.friend-request a {
+  font-size: 1rem;
+}
+
+.friend-request i {
+  font-size: 2rem;
+}
+
+i.bi-check:hover {
+  color: green;
+}
+
+i.bi-x:hover {
+  color: red;
+}
+
+#no-friend-requests {
+  padding-right: 1.6rem;
+  padding-top: 0.9rem;
+}
