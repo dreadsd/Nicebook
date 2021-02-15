@@ -14,22 +14,22 @@ RSpec.describe "Likings", type: :request do
   end
 
   describe "GET /like" do
-    context "with right user" do
+    before do
+      sign_in user
+    end
+
+    context "with existing post" do
       it "likes the post" do
-        sign_in user
         expect {
-          get like_post_url(user, post)
+          get like_post_url(post)
         }.to change(post.likes, :count).by(1)
       end
     end
 
-    context "with wrong user" do
-      let(:wrong) { User.create(name: "Wrong User", email: "wrong@user.com", password: "12345678") }
-
+    context "with non-existing post" do
       it "discards the request" do
-        sign_in wrong
         expect {
-          get like_post_url(user, post)
+          get like_post_url(id: 0)
         }.to raise_error(ActionController::RoutingError)
         expect(post.likes.count).to eq(0)
       end

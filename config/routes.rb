@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :posts, except: :new
 
   resources :likings, only: :destroy
-  get "/like_post/:user_id/:post_id", to: "likings#like", as: "like_post"
+  get "/like_post/:id", to: "likings#like", as: "like_post"
 
   resources :friendships, only: :destroy
   get "/send_request/:id", to: "friendships#send_request", as: "send_request"

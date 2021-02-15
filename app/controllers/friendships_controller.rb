@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!, only: [:send_request, :accept, :unfriend]
   def send_request
     if User.exists?(params[:id].to_i)
-      user = User.find(params[:id].to_i)
+      user = User.find(params[:id])
       unless current_user.send_request_to(user)
         flash[:error] = "Could not send friend request"
       end
@@ -14,7 +14,7 @@ class FriendshipsController < ApplicationController
 
 
   def accept
-    if current_user.friend_requests.exists?(params[:id])
+    if current_user.friend_requests.exists?(params[:id].to_i)
       @friendship = Friendship.find(params[:id])
       unless @friendship.accept_request
         flash[:error] = "Could not accept friend request"
@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
   end
 
   def unfriend
-    if current_user.friends.exists?(params[:id])
+    if current_user.friends.exists?(params[:id].to_i)
       unless current_user.delete_friend(User.find(params[:id]))
         flash[:error] = "Could not unfriend friend"
       end
