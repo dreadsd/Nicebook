@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get "/like_post/:user_id/:post_id", to: "likings#like", as: "like_post"
 
   resources :friendships, only: :destroy
-  get "/send_request/:current_id/:user_id", to: "friendships#send_request", as: "send_request"
+  get "/send_request/:id", to: "friendships#send_request", as: "send_request"
   get "/accept_request/:id", to: "friendships#accept", as: "accept_request"
-  get "/unfriend/:user_id/:friend_id", to: "friendships#unfriend", as: "unfriend"
+  get "/unfriend/:id", to: "friendships#unfriend", as: "unfriend"
 
   devise_for :users
   root "posts#index"
