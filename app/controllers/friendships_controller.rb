@@ -1,5 +1,17 @@
 class FriendshipsController < ApplicationController
-  before_action :authenticate_user!, only: [:accept, :unfriend]
+  before_action :authenticate_user!, only: [:send_request, :accept, :unfriend]
+  def send_request
+    if params[:current_id].to_i == current_user.id
+      user = User.find(params[:user_id])
+      unless current_user.send_request_to(user)
+        flash[:error] = "Could not send friend request"
+      end
+      redirect_back(fallback_location: root_path)
+    else
+      not_found
+    end
+  end
+
 
   def accept
     if current_user.friend_requests.exists?(params[:id])
@@ -23,7 +35,6 @@ class FriendshipsController < ApplicationController
       not_found
     end
   end
-
 
   def destroy
     @friendship = Friendship.find(params[:id])
