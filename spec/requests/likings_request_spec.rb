@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Likings", type: :request do
   let(:user)  { User.create(name: "Dummy Test", email: "dummy@test.com", password: "12345678") }
-  let(:user1) { User.create(name: "Wrong-----", email: "wrong@test.com", password: "12345678") }
+  let(:user1) { User.create(name: "Wrong User", email: "wrong@user.com", password: "12345678") }
   let(:post)  { user.posts.create(body: "Dummy test") }
 
   describe "DELETE /destroy" do
