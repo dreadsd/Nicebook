@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :authenticate_user!, only: :accept
+  before_action :authenticate_user!, only: [:accept, :unfriend]
 
   def accept
     if current_user.friend_requests.exists?(params[:id])
@@ -15,9 +15,7 @@ class FriendshipsController < ApplicationController
 
   def unfriend
     if params[:user_id].to_i == current_user.id
-      fst_frnd = Friendship.find_by(user_id: params[:user_id], friend_id: params[:friend_id])
-      scd_frnd = Friendship.find_by(user_id: params[:friend_id], friend_id: params[:user_id])
-      if !(fst_frnd.destroy && scd_frnd.destroy)
+      unless current_user.delete_friend(User.find(params[:friend_id]))
         flash[:error] = "Could not unfriend friend"
       end
       redirect_back(fallback_location: root_path)

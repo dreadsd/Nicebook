@@ -19,4 +19,9 @@ class User < ApplicationRecord
     request = Friendship.create(user: self, friend: user)
     user.friend_requests << request
   end
+
+  def delete_friend(user)
+    Friendship.find_by(user: self, friend: user).destroy
+    Friendship.find_by(user: user, friend: self).destroy
+  end
 end
