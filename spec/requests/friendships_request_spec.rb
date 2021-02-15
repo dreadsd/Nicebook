@@ -31,7 +31,7 @@ RSpec.describe "Friendships", type: :request do
     context "with wrong user" do
       it "discards the request" do
         sign_in john
-        get accept_request_url(friendship)
+        expect { get accept_request_url(friendship) }.to raise_error(ActionController::RoutingError)
         friendship.reload
         expect(friendship.status).to be false
       end
