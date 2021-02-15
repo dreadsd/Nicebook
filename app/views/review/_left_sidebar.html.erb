@@ -31,7 +31,12 @@
           <%= user.name %>
         </div>
         <div class="col-1 align-self-end me-5 pb-2">
-          <% unless user.enqueued_friends.exists?(current_user.id) %>
+          <% if user.enqueued_friends.exists?(current_user.id) %>
+            <% sent_request = user.friend_requests.find_by_user_id(current_user.id) %>
+            <%= link_to(friendship_path(sent_request), method: :delete, class: "text-warning text-decoration-none cancel-friend-request") do %>
+              <i class="bi-person-x-fill"></i>
+            <% end %>
+          <% else %>
             <%= link_to(send_request_path(user), class: "text-success text-decoration-none send-friend-request") do %>
               <i class="bi-person-plus-fill"></i>
             <% end %>

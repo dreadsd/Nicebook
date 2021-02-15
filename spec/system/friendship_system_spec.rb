@@ -55,7 +55,11 @@ RSpec.describe "Friendship System", type: :system do
       end
 
       it "removes send-friend-request link" do
-        expect(find("#list-people")).not_to have_css("a.send-friend-request")
+        expect(find("#list-people")).not_to have_selector(".send-friend-request")
+      end
+
+      it "adds cancel-friend-request link" do
+        expect(find("#list-people")).to have_selector(".cancel-friend-request")
       end
 
       it "stays in people list" do
@@ -64,6 +68,20 @@ RSpec.describe "Friendship System", type: :system do
 
       it "doesn't add to friends list" do
         expect(find("#list-friends")).not_to have_content(jane.name)
+      end
+
+      describe "cancel friend request" do
+        before do
+          find(".cancel-friend-request").click
+        end
+
+        it "removes cancel-friend-request link" do
+          expect(find("#list-people")).not_to have_selector(".cancel-friend-request")
+        end
+
+        it "adds send-friend-request link" do
+          expect(find("#list-people")).to have_selector(".send-friend-request")
+        end
       end
     end
 
