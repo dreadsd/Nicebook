@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <h5>Friends</h5>
+    <div class="card-text">
+      <% current_user.friends.each do |friend| %>
+        <p><%= friend.name %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">People</h5>
+    <div class="card-text">
+      <% User.all.each do |user| %>
+        <p><%= user.name %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
