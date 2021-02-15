@@ -4,6 +4,10 @@ RSpec.describe "Likings", type: :request do
   let(:user)  { User.create(name: "Dummy Test", email: "dummy@test.com", password: "12345678") }
   let(:post)  { user.posts.create(body: "Dummy test") }
 
+  before do
+    sign_in user
+  end
+
   describe "DELETE /destroy" do
     it "destroys the requested liking" do
       liking = Liking.create!(user: user, post: post)
@@ -14,10 +18,6 @@ RSpec.describe "Likings", type: :request do
   end
 
   describe "GET /like" do
-    before do
-      sign_in user
-    end
-
     context "with existing post" do
       it "likes the post" do
         expect {

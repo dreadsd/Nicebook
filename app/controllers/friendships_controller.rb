@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-  before_action :authenticate_user!, only: [:send_request, :accept, :unfriend]
   def send_request
     if User.exists?(params[:id].to_i)
       user = User.find(params[:id])

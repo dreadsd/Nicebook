@@ -1,6 +1,4 @@
 class LikingsController < ApplicationController
-  before_action :authenticate_user!, only: :like
-
   def like
     if Post.exists?(params[:id].to_i)
       @liking = Liking.new(user: current_user, post_id: params[:id])

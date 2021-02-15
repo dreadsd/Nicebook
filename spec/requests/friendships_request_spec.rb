@@ -5,6 +5,10 @@ RSpec.configure do |c|
     expect(jane.friend_requests).to be_empty
     john.send_request_to(jane)
   end
+
+  c.before(:example, :with_sign_in) do
+    sign_in john
+  end
 end
 
 RSpec.describe "Friendships", type: :request do
@@ -12,7 +16,7 @@ RSpec.describe "Friendships", type: :request do
   let(:jane) { User.create(name: "Jane Doe", email: "jane@doe.com", password: "12345678") }
   let(:friendship) { jane.friend_requests.first }
 
-  describe "DELETE /destroy", :with_friendship do
+  describe "DELETE /destroy", :with_friendship, :with_sign_in do
     it "destroys the requested friendship" do
       expect {
         delete friendship_url(friendship)
@@ -20,11 +24,7 @@ RSpec.describe "Friendships", type: :request do
     end
   end
 
-  describe "GET /send_request" do
-    before do
-      sign_in john
-    end
-
+  describe "GET /send_request", :with_sign_in do
     context "with existing user" do
       it "sends a friend request" do
         expect {
