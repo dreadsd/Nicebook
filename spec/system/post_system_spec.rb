@@ -13,6 +13,5 @@ RSpec.describe "Post System", type: :system do
     fill_in "post_body", with: "hello world"
     click_button "Post"
     expect(page).to have_content "hello world"
-    #save_and_open_page
   end
 end

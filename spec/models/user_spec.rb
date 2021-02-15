@@ -47,6 +47,20 @@ RSpec.describe User, type: :model do
       it "sets the friend for the sender" do
         expect(john.friends.first).to eq(jane)
       end
+
+      describe "delete friend" do
+        before do
+          expect { jane.delete_friend(john) }.not_to raise_error
+        end
+
+        it "deletes friend for one side" do
+          expect(jane.friends).to be_empty
+        end
+
+        it "deletes friend for the other side" do
+          expect(john.friends).to be_empty
+        end
+      end
     end
 
     context "the receiver rejects the request" do
