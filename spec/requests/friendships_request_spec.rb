@@ -40,6 +40,18 @@ RSpec.describe "Friendships", type: :request do
         }.to raise_error(ActionController::RoutingError)
       end
     end
+
+    context "with current user as enqueued user" do
+      before do
+        john.send_request_to(jane)
+      end
+
+      it "discards the request" do
+        expect {
+          get send_request_url(jane)
+        }.to raise_error(ActionController::RoutingError)
+      end
+    end
   end
 
   describe "GET /accept", :with_friendship do

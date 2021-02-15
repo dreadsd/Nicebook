@@ -1,6 +1,8 @@
 class FriendshipsController < ApplicationController
   def send_request
-    if User.exists?(params[:id].to_i)
+    if User.exists?(params[:id].to_i) &&
+        !User.find(params[:id]).enqueued_friends.exists?(current_user.id)
+
       user = User.find(params[:id])
       unless current_user.send_request_to(user)
         flash[:error] = "Could not send friend request"
