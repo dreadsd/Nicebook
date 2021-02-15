@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Likings", type: :request do
   let(:user)  { User.create(name: "Dummy Test", email: "dummy@test.com", password: "12345678") }
-  let(:user1) { User.create(name: "Wrong User", email: "wrong@user.com", password: "12345678") }
   let(:post)  { user.posts.create(body: "Dummy test") }
 
   describe "DELETE /destroy" do
@@ -25,8 +24,10 @@ RSpec.describe "Likings", type: :request do
     end
 
     context "with wrong user" do
+      let(:wrong) { User.create(name: "Wrong User", email: "wrong@user.com", password: "12345678") }
+
       it "discards the request" do
-        sign_in user1
+        sign_in wrong
         expect {
           get like_post_url(user, post)
         }.to raise_error(ActionController::RoutingError)
