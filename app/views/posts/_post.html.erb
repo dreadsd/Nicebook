@@ -15,16 +15,20 @@
         </div>
       </div>
       <div class="col-1 align-self-end ps-4">
-        <div class="btn-group dropdown-actions">
-          <a class="text-primary text-decoration-none dropdown-dots" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical"></i></a>
-          <ul class="dropdown-menu">
-            <% unless params["action"] == "show" %>
-              <li><%= link_to "Show", post, class: "dropdown-item" %></li>
-            <% end %>
-            <li><%= link_to "Edit", edit_post_path(post), class: "dropdown-item" %></li>
-            <li><%= link_to "Destroy", post, method: :delete, class: "dropdown-item" %></li>
-          </ul>
-        </div>
+        <% if current_user == post.author || params["action"] != "show" %>
+          <div class="btn-group dropdown-actions">
+            <a class="text-primary text-decoration-none dropdown-dots" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical"></i></a>
+            <ul class="dropdown-menu">
+              <% unless params["action"] == "show" %>
+                <li><%= link_to "Show", post, class: "dropdown-item" %></li>
+              <% end %>
+              <% if current_user == post.author %>
+                <li><%= link_to "Edit", edit_post_path(post), class: "dropdown-item" %></li>
+                <li><%= link_to "Destroy", post, method: :delete, class: "dropdown-item" %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="card-text mb-3">
