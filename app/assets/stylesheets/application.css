@@ -68,3 +68,7 @@ i.bi-x:hover {
 .comment-body {
   background-color: rgb(242, 242, 242);
 }
+
+.comment-input {
+  line-height: 2.3 !important;
+}
