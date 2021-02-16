@@ -2,10 +2,22 @@
   <div class="col-1">
     <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
   </div>
-  <div class="col">
-    <div class="rounded-pill py-2 ps-3 pe-2 me-5 comment-body">
-      <a href="#" class="text-primary text-decoration-none"><%= comment.author.name %></a>
-      <%= comment.body %>
+  <div class="col ps-4">
+    <div class="py-2 px-2 me-5 comment-body row text-break">
+      <div class="col">
+        <a href="#" class="text-primary text-decoration-none"><%= comment.author.name %></a>
+        <%= comment.body %>
+      </div>
+      <div class="col-1">
+        <div class="btn-group comment-actions">
+          <a class="text-secondary text-decoration-none dropdown-dots" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical comment-dots"></i></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Show", comment, class: "dropdown-item" %></li>
+            <li><%= link_to "Edit", edit_comment_path(comment), class: "dropdown-item" %></li>
+            <li><%= link_to "Destroy", comment, method: :delete, class: "dropdown-item" %></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="ps-3 pe-2 py-1">
       <a href="#" class="text-decoration-none">Like</a>

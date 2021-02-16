@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_back(fallback_location: root_path)
+      redirect_to @comment.commentable
+      #redirect_back(fallback_location: root_path)
     else
       flash[:error] = "Could not create comment"
       raise flash[:error]

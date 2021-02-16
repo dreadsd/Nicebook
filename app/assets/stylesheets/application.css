@@ -67,8 +67,22 @@ i.bi-x:hover {
 
 .comment-body {
   background-color: rgb(242, 242, 242);
+  border-radius: 2rem;
 }
 
 .comment-input {
   line-height: 2.3 !important;
+}
+
+.dropdown-dots {
+  cursor: pointer;
+}
+
+.comment-actions {
+  padding-bottom: 0.6rem;
+  padding-left: 1rem;
+}
+
+.comment-dots {
+  font-size: 1rem;
 }

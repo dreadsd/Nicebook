@@ -6,15 +6,17 @@
       </div>
       <div class="col">
         <div class="row">
-          <a href="#" class="text-decoration-none author-name"><%= post.author.name %></a>
+          <div class="col">
+            <a href="#" class="text-decoration-none author-name"><%= post.author.name %></a>
+          </div>
         </div>
         <div class="row">
           <span class="text-muted pub-at"><%= distance_of_time_in_words(Time.now, post.created_at) %></span>
         </div>
       </div>
-      <div class="col-1 align-self-end">
-        <div class="btn-group dropdown-actions ms-3">
-          <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+      <div class="col-1 align-self-end ps-4">
+        <div class="btn-group dropdown-actions">
+          <a class="text-primary text-decoration-none dropdown-dots" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical"></i></a>
           <ul class="dropdown-menu">
             <% unless params["action"] == "show" %>
               <li><%= link_to "Show", post, class: "dropdown-item" %></li>
