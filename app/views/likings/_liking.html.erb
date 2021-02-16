@@ -1,10 +1,10 @@
 <% liking = Liking.where(user_id: current_user.id, post_id: post.id) %>
 <% if liking.any? %>
-  <%= link_to(liking_path(liking.first.id), method: :delete, class: "btn text-primary fw-bold") do %>
+  <%= link_to(liking_path(liking.first.id), method: :delete, class: "text-primary fw-bold text-decoration-none") do %>
     <i class="bi-hand-thumbs-up-fill"></i> Like
   <% end %>
 <% else %>
-  <%= link_to(like_post_path(post.id), class: "btn text-secondary fw-bold") do %>
+  <%= link_to(like_post_path(post.id), class: "text-secondary fw-bold text-decoration-none") do %>
     <i class="bi-hand-thumbs-up"></i> Like
   <% end %>
 <% end %>

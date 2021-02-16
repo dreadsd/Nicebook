@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :likings
   has_many :liked_posts, through: :likings, source: :post
 
+  has_many :comments, foreign_key: :author_id
+
   validates :name, presence: true, length: { minimum: 4 }
 
   def send_request_to(user)
