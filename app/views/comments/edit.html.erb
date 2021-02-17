@@ -1,4 +1,6 @@
 <% content_for :content do %>
+  <%= render "comments/form", model: @comment %>
+  <!--
   <%= form_with(model: @comment, class: "px-1 py-2 mb-5 row", id: "comment-edit") do |f| %>
     <div class="col-1">
       <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
@@ -12,6 +14,7 @@
       <% end %>
     </div>
   <% end %>
+  -->
 <% end %>
 <% content_for :comments do %>
   <% if @comment.comments.any? %>
