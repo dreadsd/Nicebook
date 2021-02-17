@@ -4,7 +4,7 @@
       <%= render "comment", comment: comment %>
     <% end %>
   </div>
-  <% if form %>
+  <% unless edit %>
     <%= render "form", model: Comment.new %>
   <% end %>
 </div>

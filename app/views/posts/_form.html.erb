@@ -1,4 +1,7 @@
 <%= form_with(model: post, class: "px-1 py-2 mb-5 card") do |f| %>
+  <% if edit %>
+    <%= render "resources/go_back", reference: @post, attribute: "" %>
+  <% end %>
   <div class="card-body row">
     <div class="col-1">
       <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
@@ -9,6 +12,5 @@
   </div>
   <div class="card-footer bg-transparent">
     <%= f.submit "Post", class: "btn" %>
-    <%= link_to "Back", post, class: "btn" %>
   </div>
 <% end %>

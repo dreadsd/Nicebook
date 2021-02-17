@@ -4,6 +4,6 @@
 <% end %>
 <% content_for :comments do %>
   <% if @comment.comments.any? %>
-    <%= render "comment_section", comment: @comment, form: false %>
+    <%= render "comment_section", comment: @comment, edit: true %>
   <% end %>
 <% end %>

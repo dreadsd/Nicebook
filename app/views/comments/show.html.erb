@@ -2,5 +2,5 @@
   <%= render "comment", comment: @comment %>
 <% end %>
 <% content_for :comments do %>
-  <%= render "comment_section", comment: @comment, form: true %>
+  <%= render "comment_section", comment: @comment, edit: false %>
 <% end %>
