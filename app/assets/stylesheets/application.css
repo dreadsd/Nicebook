@@ -50,11 +50,6 @@ i {
   padding: 0 0.5rem 0.4rem 1.1rem;
 }
 
-.friend-request {
-  padding: 0;
-  cursor: pointer;
-}
-
 .friend-request a {
   font-size: 1rem;
 }
@@ -85,10 +80,6 @@ i.bi-x:hover {
   line-height: 2.3 !important;
 }
 
-.dropdown-dots {
-  cursor: pointer;
-}
-
 .comment-actions {
   padding-bottom: 0.6rem;
   padding-left: 1rem;
@@ -100,4 +91,8 @@ i.bi-x:hover {
 
 .go-back {
   font-size: 2rem;
+}
+
+.pointer {
+  cursor: pointer;
 }

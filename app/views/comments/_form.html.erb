@@ -6,7 +6,7 @@
     <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
   </div>
   <div class="col">
-    <%= f.text_field :body, class: "form-control rounded-pill comment-input", id: nil %>
+    <%= f.text_field :body, class: "form-control rounded-pill comment-input", id: "comment-#{commentable.id}" %>
   </div>
   <div class="col-1 pt-1">
     <%= link_to("", class: "text-decoration-none", onclick: "document.querySelector('#comment-#{commentable.id}-#{commentable.class}').submit()") do %>

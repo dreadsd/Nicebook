@@ -17,7 +17,7 @@
       <div class="col-1 align-self-end ps-4">
         <% if current_user == post.author || params["action"] != "show" %>
           <div class="btn-group dropdown-actions">
-            <a class="text-primary text-decoration-none dropdown-dots" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical"></i></a>
+            <a class="text-primary text-decoration-none pointer" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical"></i></a>
             <ul class="dropdown-menu">
               <% unless params["action"] == "show" %>
                 <li><%= link_to "Show", post, class: "dropdown-item" %></li>
@@ -46,7 +46,8 @@
         <%= render "likings/liking", post: post %>
       </div>
       <div class="col">
-        <a href="#" class="text-decoration-none text-secondary fw-bold">Comment</a>
+        <label for="comment-<%= post.id %>" class="text-secondary fw-bold pointer"><i class="bi-chat-left"></i> Comment</label>
+        <!-- <a href="#" class="text-decoration-none text-secondary fw-bold">Comment</a> -->
       </div>
       <div class="col">
         <a href="#" class="text-decoration-none text-secondary fw-bold">Share</a>

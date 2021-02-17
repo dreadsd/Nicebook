@@ -11,7 +11,7 @@
       <div class="col-1">
         <% if current_user == comment.author || !(params["action"] == "show" && params["controller"] == "comments") %>
           <div class="btn-group comment-actions">
-            <a class="text-secondary text-decoration-none dropdown-dots" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical comment-dots"></i></a>
+            <a class="text-secondary text-decoration-none pointer" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical comment-dots"></i></a>
             <ul class="dropdown-menu">
               <% if !(params["action"] == "show" && params["controller"] == "comments") %>
                 <li><%= link_to "Show", comment, class: "dropdown-item" %></li>

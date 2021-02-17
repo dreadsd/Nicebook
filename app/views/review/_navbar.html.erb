@@ -12,7 +12,7 @@
     <ul class="dropdown-menu" id="dropdown-requests">
       <% if current_user.friend_requests.any? %>
         <% current_user.friend_requests.each do |friend_request| %>
-          <li class="dropdown-header friend-request">
+          <li class="dropdown-header friend-request pointer p-0">
             <a href="#" class="text-secondary text-decoration-none">
               <img src="https://bulma.io/images/placeholders/32x32.png" class="pe-2 pb-1">
               <%= friend_request.user.name %>
