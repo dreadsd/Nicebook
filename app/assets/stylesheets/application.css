@@ -14,6 +14,17 @@
  *= require_self
  */
 
+html {
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+
 .pub-at {
   font-size: 14px;
 }
@@ -85,4 +96,8 @@ i.bi-x:hover {
 
 .comment-dots {
   font-size: 1rem;
+}
+
+.go-back {
+  font-size: 2rem;
 }

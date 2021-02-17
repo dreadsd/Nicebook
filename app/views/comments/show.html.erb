@@ -1,12 +1,15 @@
 <div class="card mb-4">
+  <%= link_to(@comment.commentable, class: "text-primary text-decoration-none ms-3") do %>
+    <i class="bi-arrow-left-circle-fill go-back"></i>
+  <% end %>
   <div class="card-body pb-1">
     <div class="card-text row pt-1 pb-2">
       <div class="col">
       <%= render "comment", comment: @comment %>
       </div>
     </div>
-    <div class="comments-section pe-1 pb-3">
-      <div class="comment-list pb-3">
+    <div class="comments-section ps-5 pe-1 pb-3">
+      <div class="comment-list ps-3 pb-3">
         <% @comment.comments.each do |comment| %>
           <%= render "comments/comment", comment: comment %>
         <% end %>
