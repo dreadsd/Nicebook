@@ -30,7 +30,7 @@
       <div class="container-fluid col-6 px-5">
         <p id="notice"><%= notice %></p>
         <p id="alert"><%= alert %></p>
-        <%= yield %>
+        <%= content_for?(:body) ? yield(:body) : yield %>
       </div>
       <div class="sidebar col-3">
       </div>

@@ -1,0 +1,16 @@
+<% content_for :body do %>
+<div class="card mb-4">
+  <%= link_to(@comment.commentable, class: "text-primary text-decoration-none ms-3") do %>
+    <i class="bi-arrow-left-circle-fill go-back"></i>
+  <% end %>
+  <div class="card-body pb-1">
+    <div class="card-text row pt-1 pb-2">
+      <div class="col">
+        <%= yield :content %>
+      </div>
+    </div>
+    <%= yield :comments %>
+  </div>
+</div>
+<% end %>
+<%= render template: "layouts/application" %>
