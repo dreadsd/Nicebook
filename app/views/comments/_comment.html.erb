@@ -37,10 +37,10 @@
       <%= distance_of_time_in_words(Time.now, comment.created_at) %>
       &nbsp; <i class="bi-hand-thumbs-up-fill fs-5"></i> 5
     </div>
-    <% if comment.comments.any? %>
+    <% if nested && comment.comments.any? %>
       <div class="my-4">
         <% comment.comments.each do |sub_comment| %>
-          <%= render "comments/comment", comment: sub_comment, sub: true %>
+          <%= render "comments/comment", comment: sub_comment, sub: true, nested: false %>
         <% end %>
       </div>
     <% end %>

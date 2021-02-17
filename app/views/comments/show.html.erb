@@ -1,6 +1,7 @@
 <% content_for :content do %>
-  <%= render "comment", comment: @comment %>
+  <%= render "comment", comment: @comment, sub: false, nested: false %>
 <% end %>
+
 <% content_for :comments do %>
   <%= render "comment_section", comment: @comment, edit: false %>
 <% end %>

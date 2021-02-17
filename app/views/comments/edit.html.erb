@@ -2,6 +2,7 @@
   <%= render "comments/form", model: @comment %>
   <br>
 <% end %>
+
 <% content_for :comments do %>
   <% if @comment.comments.any? %>
     <%= render "comment_section", comment: @comment, edit: true %>
