@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
 
     if @comment.save
       redirect_to @comment.commentable
-      #redirect_back(fallback_location: root_path)
     else
       flash[:error] = "Could not create comment"
       raise flash[:error]
@@ -21,7 +20,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_back(fallback_location: root_path)
+      redirect_to @comment.commentable
     else
       render :edit
     end
