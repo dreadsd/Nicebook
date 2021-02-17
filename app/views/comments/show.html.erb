@@ -1,14 +1,6 @@
 <% content_for :content do %>
-  <%= request.referrer %>
   <%= render "comment", comment: @comment %>
 <% end %>
 <% content_for :comments do %>
-  <div class="comments-section ps-5 pe-1 pb-3">
-    <div class="comment-list ps-3 pb-3">
-      <% @comment.comments.each do |comment| %>
-        <%= render "comments/comment", comment: comment %>
-      <% end %>
-    </div>
-    <%= render "comments/form", model: Comment.new %>
-  </div>
+  <%= render "comment_section", comment: @comment, form: true %>
 <% end %>

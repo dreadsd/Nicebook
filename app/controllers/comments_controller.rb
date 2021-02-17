@@ -2,11 +2,11 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
 
   def show
-    render layout: "show_comment"
+    render layout: "comment_layout"
   end
 
   def edit
-    render layout: "show_comment"
+    render layout: "comment_layout"
   end
 
   def create

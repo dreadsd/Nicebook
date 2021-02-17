@@ -1,0 +1,10 @@
+<div class="comments-section ps-5 pe-1 pb-3">
+  <div class="comment-list ps-3 pb-3">
+    <% comment.comments.each do |comment| %>
+      <%= render "comment", comment: comment %>
+    <% end %>
+  </div>
+  <% if form %>
+    <%= render "form", model: Comment.new %>
+  <% end %>
+</div>
