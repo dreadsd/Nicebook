@@ -55,11 +55,11 @@
       <div class="comment-list pb-3">
         <% if params["action"] == "show" %>
           <% post.comments.each do |comment| %>
-            <%= render "comments/comment", comment: comment %>
+            <%= render "comments/comment", comment: comment, sub: false %>
           <% end %>
         <% else %>
           <% post.comments.last(3).each do |comment| %>
-            <%= render "comments/comment", comment: comment %>
+            <%= render "comments/comment", comment: comment, sub: false %>
           <% end %>
         <% end %>
       </div>
