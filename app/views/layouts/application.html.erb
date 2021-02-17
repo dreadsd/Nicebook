@@ -14,7 +14,7 @@
   <body class="container-fluid gx-0">
     <nav class="navbar navbar-expand-lg bg-primary px-5">
       <div class="col-3">
-        <span class="navbar-brand text-white">Nicebook</span>
+        <%= link_to "Nicebook", root_path, class: "navbar-brand text-white text-decoration-none" %>
       </div>
       <% if user_signed_in? %>
         <%= render "review/navbar" %>
