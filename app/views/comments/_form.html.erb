@@ -1,7 +1,7 @@
-<%= form_with(model: Comment.new, class: "row", id: "comment-#{post.id}") do |f| %>
+<%= form_with(model: Comment.new, class: "row", id: "comment-#{commentable.id}-#{commentable.class}") do |f| %>
   <%= f.hidden_field :author_id, value: current_user.id, id: nil %>
-  <%= f.hidden_field :commentable_id, value: post.id, id: nil %>
-  <%= f.hidden_field :commentable_type, value: post.class, id: nil %>
+  <%= f.hidden_field :commentable_id, value: commentable.id, id: nil %>
+  <%= f.hidden_field :commentable_type, value: commentable.class, id: nil %>
   <div class="col-1">
     <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
   </div>
@@ -9,7 +9,7 @@
     <%= f.text_field :body, class: "form-control rounded-pill comment-input", id: nil %>
   </div>
   <div class="col-1 pt-1">
-    <%= link_to("", class: "text-decoration-none", onclick: "document.querySelector('#comment-#{post.id}').submit()") do %>
+    <%= link_to("", class: "text-decoration-none", onclick: "document.querySelector('#comment-#{commentable.id}-#{commentable.class}').submit()") do %>
       <i class="bi-caret-right-fill"></i>
     <% end %>
   </div>

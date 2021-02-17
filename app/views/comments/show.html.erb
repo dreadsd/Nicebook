@@ -1,14 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @comment.author_id %>
-</p>
-
-<p>
-  <strong>Commentable:</strong>
-  <%= @comment.commentable_id %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<div class="card mb-4">
+  <div class="card-body pb-1">
+    <div class="card-text row pt-1 pb-2">
+      <div class="col">
+      <%= render "comment", comment: @comment %>
+      </div>
+    </div>
+    <div class="comments-section pe-1 pb-3">
+      <div class="comment-list pb-3">
+        <% @comment.comments.each do |comment| %>
+          <%= render "comments/comment", comment: comment %>
+        <% end %>
+      </div>
+      <%= render "comments/form", commentable: @comment %>
+    </div>
+  </div>
+</div>
