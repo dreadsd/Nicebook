@@ -5,10 +5,16 @@ class Comment < ApplicationRecord
 
   before_save :set_nested,
     if: Proc.new { commentable.instance_of?(Comment) }
+  before_save :raise_invalid,
+    if: Proc.new { commentable.nested }
 
   private
 
   def set_nested
     self.nested = true
+  end
+
+  def raise_invalid
+    raise ActiveRecord::RecordInvalid
   end
 end
