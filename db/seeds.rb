@@ -13,3 +13,7 @@ Post.first.comments.create(author: User.first, body: "Lorem ipsum dolor sit amet
 Post.first.comments.create(author: User.second, body: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
 Post.first.comments.create(author: User.third, body: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit")
 Post.first.comments.create(author: User.first, body: "sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.")
+
+Comment.first.comments.create(author: User.first, body: "first")
+Comment.first.comments.create(author: User.first, body: "second")
+Comment.first.comments.create(author: User.first, body: "third")
