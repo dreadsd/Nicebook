@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :check_nesting, only: %i[ show ]
 
   def show
     render layout: "comment_layout"
@@ -37,6 +38,10 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def check_nesting
+    not_found if @comment.nested
   end
 
   def comment_params
