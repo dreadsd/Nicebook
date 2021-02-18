@@ -4,7 +4,9 @@
   <div class="btn-group <%= resource.singularize %>-actions">
     <a class="text-<%= resource == "posts" ? "primary" : "secondary" %> text-decoration-none pointer" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical <%= resource.singularize %>-dots"></i></a>
     <ul class="dropdown-menu">
-      <% if !(params["action"] == "show" && params["controller"] == resource) %>
+      <% if !(params["action"] == "show" && params["controller"] == resource) &&
+          !(resource == "comments" && model.nested == true) %>
+
         <li><%= link_to "Show", model, class: "dropdown-item" %></li>
       <% end %>
       <% if current_user == model.author %>
