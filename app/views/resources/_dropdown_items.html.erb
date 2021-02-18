@@ -1,0 +1,17 @@
+<% if current_user == model.author ||
+    !(params["action"] == "show" && params["controller"] == resource) %>
+
+  <div class="btn-group <%= resource.singularize %>-actions">
+    <a class="text-<%= resource == "posts" ? "primary" : "secondary" %> text-decoration-none pointer" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical <%= resource.singularize %>-dots"></i></a>
+    <ul class="dropdown-menu">
+      <% if !(params["action"] == "show" && params["controller"] == resource) %>
+        <li><%= link_to "Show", model, class: "dropdown-item" %></li>
+      <% end %>
+      <% if current_user == model.author %>
+        <% path = model.instance_of?(Post) ? edit_post_path(model) : edit_comment_path(model) %>
+        <li><%= link_to "Edit", path, class: "dropdown-item" %></li>
+        <li><%= link_to "Destroy", model, method: :delete, class: "dropdown-item" %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

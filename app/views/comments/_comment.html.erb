@@ -9,22 +9,7 @@
         <%= comment.body %>
       </div>
       <div class="col-1">
-        <% if current_user == comment.author ||
-            !(params["action"] == "show" && params["controller"] == "comments") %>
-
-            <div class="btn-group comment-actions">
-            <a class="text-secondary text-decoration-none pointer" data-bs-toggle="dropdown"><i class="bi-three-dots-vertical comment-dots"></i></a>
-            <ul class="dropdown-menu">
-              <% if !(params["action"] == "show" && params["controller"] == "comments") %>
-                <li><%= link_to "Show", comment, class: "dropdown-item" %></li>
-              <% end %>
-              <% if current_user == comment.author %>
-                <li><%= link_to "Edit", edit_comment_path(comment), class: "dropdown-item" %></li>
-                <li><%= link_to "Destroy", comment, method: :delete, class: "dropdown-item" %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+        <%= render "resources/dropdown_items", model: comment, resource: "comments" %>
       </div>
     </div>
     <div class="ps-3 pe-2 py-1">
