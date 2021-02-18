@@ -5,7 +5,7 @@
   <div class="col">
     <%= f.hidden_field :commentable_id, value: commentable.id %>
     <%= f.hidden_field :commentable_type, value: commentable.class %>
-    <%= f.text_field :body, class: "form-control rounded-pill comment-input", id: nil %>
+    <%= f.text_field :body, class: "form-control rounded-pill comment-input", id: "comment-#{commentable.id}" %>
   </div>
   <div class="col-2 pt-1">
     <%= f.submit "Send", class: "btn btn-primary" %>
