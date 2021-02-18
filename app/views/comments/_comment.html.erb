@@ -15,17 +15,17 @@
     <div class="ps-3 pe-2 py-1">
       <a href="#" class="text-decoration-none">Like</a>
       <span class="fw-bold">·</span>
-      <% unless sub %>
+      <% unless attr.include?(:is_nested) %>
         <a href="#" class="text-decoration-none">Reply</a>
         <span class="fw-bold">·</span>
       <% end %>
       <%= distance_of_time_in_words(Time.now, comment.created_at) %>
       &nbsp; <i class="bi-hand-thumbs-up-fill fs-5"></i> 5
     </div>
-    <% if nested && comment.comments.any? %>
+    <% if attr.include?(:show_nested) && comment.comments.any? %>
       <div class="my-4">
         <% comment.comments.each do |sub_comment| %>
-          <%= render "comments/comment", comment: sub_comment, sub: true, nested: false %>
+          <%= render "comments/comment", comment: sub_comment, attr: [:is_nested] %>
         <% end %>
       </div>
     <% end %>
