@@ -10,12 +10,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    referrer = request.referrer.split("/")
-    post = referrer[-2].capitalize.singularize.constantize
-    commentable = post.find(referrer[-1])
-
     @comment = current_user.comments.new(comment_params)
-    @comment.commentable = commentable
 
     if @comment.save
       redirect_to @comment.commentable
@@ -45,6 +40,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:commentable_id, :commentable_type, :body)
   end
 end

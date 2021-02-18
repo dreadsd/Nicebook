@@ -3,9 +3,11 @@
     <img src="https://bulma.io/images/placeholders/48x48.png" class="rounded-circle">
   </div>
   <div class="col">
+    <%= f.hidden_field :commentable_id, value: commentable.id %>
+    <%= f.hidden_field :commentable_type, value: commentable.class %>
     <%= f.text_field :body, class: "form-control rounded-pill comment-input", id: nil %>
   </div>
   <div class="col-2 pt-1">
-    <%= f.submit "     ", class: "btn btn-primary" %>
+    <%= f.submit "Send", class: "btn btn-primary" %>
   </div>
 <% end %>

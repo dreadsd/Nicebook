@@ -48,7 +48,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= render "comments/form", model: Comment.new %>
+      <%= render "comments/form", model: Comment.new, commentable: post %>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <% content_for :content do %>
-  <%= render "comments/form", model: @comment %>
+  <%= render "comments/form", model: @comment, commentable: @comment.commentable %>
   <br>
 <% end %>
 

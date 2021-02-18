@@ -5,6 +5,6 @@
     <% end %>
   </div>
   <% unless edit %>
-    <%= render "form", model: Comment.new %>
+    <%= render "form", model: Comment.new, commentable: comment %>
   <% end %>
 </div>
