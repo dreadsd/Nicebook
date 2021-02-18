@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   before_save :set_nested,
     if: Proc.new { commentable.instance_of?(Comment) }
   before_save :raise_invalid,
-    if: Proc.new { commentable.nested }
+    if: Proc.new { commentable.respond_to?(:nested) && commentable.nested }
 
   private
 
