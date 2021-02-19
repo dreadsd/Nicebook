@@ -7,12 +7,12 @@
       <% if !(params["action"] == "show" && params["controller"] == resource) &&
           !(resource == "comments" && model.nested == true) %>
 
-        <li><%= link_to "Show", model, class: "dropdown-item" %></li>
+        <li><%= link_to "Show", model, class: "dropdown-item #{resource}-show" %></li>
       <% end %>
       <% if current_user == model.author %>
         <% path = model.instance_of?(Post) ? edit_post_path(model) : edit_comment_path(model) %>
-        <li><%= link_to "Edit", path, class: "dropdown-item" %></li>
-        <li><%= link_to "Destroy", model, method: :delete, class: "dropdown-item" %></li>
+        <li><%= link_to "Edit", path, class: "dropdown-item #{resource}-edit" %></li>
+        <li><%= link_to "Destroy", model, method: :delete, class: "dropdown-item #{resource}-destroy" %></li>
       <% end %>
     </ul>
   </div>
